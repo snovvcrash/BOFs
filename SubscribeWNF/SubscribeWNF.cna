@@ -1,0 +1,22 @@
+alias subscribe-wnf {
+    local('$arch $handle $bof $args');
+
+    $arch   = barch($1);
+
+    $handle = openf(script_resource("dist/subscribe-wnf. $+ $arch $+ .o"));
+    $bof    = readb($handle, -1);
+    closef($handle);
+
+    $args   = bof_pack($1, "i", $2);
+
+    btask($1, "Running SubscribeWNF BOF");
+
+    beacon_inline_execute($1, $bof, "go", $args);
+}
+
+beacon_command_register(
+"subscribe-wnf",
+"Subscribes to WNF notifications for a number of seconds",
+"\
+usage:    subscribe-wnf <NUMBER_OF_SECONDS_TO_LISTEN>\
+example:  subscribe-wnf 10");
