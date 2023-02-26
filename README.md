@@ -1,11 +1,24 @@
 BOFs
 ==========
 
-Build all BOFs:
+Get `beacon.h`:
 
 ```console
 ~$ curl -sS https://download.cobaltstrike.com/downloads/beacon.h -o beacon.h
+```
+
+Build all BOFs:
+
+```console
 ~$ ./make_all.sh
+```
+
+Build a single BOF:
+
+```console
+~$ cp beacon.h <BOF_DIR>
+~$ cd <BOF_DIR>
+~$ make
 ```
 
 ## [SubscribeWNF](/SubscribeWNF)
