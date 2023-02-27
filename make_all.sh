@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-for d in */; do
-	if [ "${d}" != "template/" ]; then
-		pushd "${d}" > /dev/null
-		make
-		popd > /dev/null
-	fi
+shopt -s extglob
+
+for d in !(template)/; do
+	pushd "${d}" > /dev/null
+	make
+	popd > /dev/null
 done
