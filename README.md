@@ -20,6 +20,21 @@ Build a single BOF:
 ~$ make
 ```
 
+## [BackdoorSCManager](/BackdoorSCManager)
+
+Backdoors SCManager SDDL.
+
+### Help
+
+```
+usage:    backdoor-scmanager <TARGET_HOST> <SDDL_TO_SET>
+example:  backdoor-scmanager SRV01.megacorp.local D:(A;;KA;;;WD)
+```
+
+### References
+
+- https://twitter.com/0gtweet/status/1628720819537936386
+
 ## [SubscribeWNF](/SubscribeWNF)
 
 Subscribes to [WNF notifications](https://www.youtube.com/watch?v=MybmgE95weo) for a number of seconds.
@@ -35,18 +50,3 @@ example:  subscribe-wnf 10
 
 - https://github.com/gtworek/PSBits/tree/master/WNF
 - https://www.youtube.com/watch?v=oyshXuCH__w
-
-## [BackdoorSCManager](/BackdoorSCManager)
-
-Backdoors SCManager SDDL.
-
-### Help
-
-```
-usage:    backdoor-scmanager <TARGET_HOST> <SDDL_TO_SET>
-example:  backdoor-scmanager SRV01.megacorp.local D:(A;;KA;;;WD)
-```
-
-### References
-
-- https://twitter.com/0gtweet/status/1628720819537936386
