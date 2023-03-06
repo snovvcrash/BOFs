@@ -20,6 +20,8 @@ Build a single BOF:
 ~$ make
 ```
 
+> **DISCLAIMER.** All information contained in this repository is provided for educational and research purposes only. The owner is not responsible for any illegal use of included code snippets.
+
 ## [BackdoorSCManager](/BackdoorSCManager)
 
 Backdoors SCManager SDDL.
@@ -35,7 +37,7 @@ example:  backdoor-scmanager SRV01.megacorp.local D:(A;;KA;;;WD)
 
 - https://twitter.com/0gtweet/status/1628720819537936386
 
-## [SubscribeWNF](/SubscribeWNF)
+## [SubscribeWNF](/SubscribeWNF) (No Profit, Training Only)
 
 Subscribes to [WNF notifications](https://www.youtube.com/watch?v=MybmgE95weo) for a number of seconds.
 
